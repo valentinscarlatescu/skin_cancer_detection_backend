@@ -27,12 +27,6 @@ public class User implements UserDetails {
     @CreationTimestamp
     private LocalDateTime joinDateTime;
     private String imagePath;
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private List<Cart> carts;
-
-    @Formula("(SELECT COUNT(c.id) FROM cart c WHERE c.user_id = id)")
-    private int cartsNumber;
 
     public User() {
 
@@ -141,21 +135,5 @@ public class User implements UserDetails {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
-    }
-
-    public List<Cart> getCarts() {
-        return carts;
-    }
-
-    public void setCarts(List<Cart> carts) {
-        this.carts = carts;
-    }
-
-    public int getCartsNumber() {
-        return cartsNumber;
-    }
-
-    public void setCartsNumber(int cartsNumber) {
-        this.cartsNumber = cartsNumber;
     }
 }
