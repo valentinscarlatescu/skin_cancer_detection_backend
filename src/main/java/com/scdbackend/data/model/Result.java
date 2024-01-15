@@ -17,11 +17,19 @@ public class Result {
 
     private Integer malign;
     private Integer benign;
+    private Integer processed;
 
     @CreationTimestamp
     private LocalDateTime dateTime;
 
     private String imagePath;
+
+    public Integer getProcessed() {
+        return processed;
+    }
+    public void setProcessed(Integer processed) {
+        this.processed = processed;
+    }
 
     public Long getId() {
         return id;

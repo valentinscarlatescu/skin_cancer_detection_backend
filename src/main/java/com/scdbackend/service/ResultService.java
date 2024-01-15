@@ -51,6 +51,7 @@ public class ResultService {
         // Actualizați atributele rezultatului existent cu noile valori
         existingResult.setMalign(updatedResult.getMalign());
         existingResult.setBenign(updatedResult.getBenign());
+        existingResult.setProcessed(updatedResult.getProcessed());
         existingResult.setDateTime(updatedResult.getDateTime());
         existingResult.setImagePath(updatedResult.getImagePath());
 
