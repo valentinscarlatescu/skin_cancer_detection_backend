@@ -25,6 +25,13 @@ public class ResultService {
     }
 
     public void save(Result result) {
+        if (result.getMalign() == null) {
+            result.setMalign(0);
+        }
+
+        if (result.getBenign() == null) {
+            result.setBenign(0);
+        }
         repository.save(result);
     }
 
@@ -43,20 +50,19 @@ public class ResultService {
         return repository.count();
     }
 
-    public Result updateScreen(Result updatedResult) {
-        // Obțineți rezultatul existent din baza de date folosind ID-ul
-        Result existingResult = repository.findById(updatedResult.getId())
-                .orElseThrow(() -> new RuntimeException("Result not found with id: " + updatedResult.getId()));
-
-        // Actualizați atributele rezultatului existent cu noile valori
-        existingResult.setMalign(updatedResult.getMalign());
-        existingResult.setBenign(updatedResult.getBenign());
-        existingResult.setProcessed(updatedResult.getProcessed());
-        existingResult.setDateTime(updatedResult.getDateTime());
-        existingResult.setImagePath(updatedResult.getImagePath());
-
-        // Salvați rezultatul actualizat în baza de date
-        return repository.save(existingResult);
-    }
+//    public Result updateScreen(Result updatedResult) {
+//        // Obțineți rezultatul existent din baza de date folosind ID-ul
+//        Result existingResult = repository.findById(updatedResult.getId())
+//                .orElseThrow(() -> new RuntimeException("Result not found with id: " + updatedResult.getId()));
+//
+//        // Actualizați atributele rezultatului existent cu noile valori
+//        existingResult.setMalign(updatedResult.getMalign());
+//        existingResult.setBenign(updatedResult.getBenign());
+//        existingResult.setDateTime(updatedResult.getDateTime());
+//        existingResult.setImagePath(updatedResult.getImagePath());
+//
+//        // Salvați rezultatul actualizat în baza de date
+//        return repository.save(existingResult);
+//    }
 
 }

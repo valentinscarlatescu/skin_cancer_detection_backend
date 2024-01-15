@@ -28,7 +28,7 @@ public class ResultController {
     @PostMapping("/results")
     public void save(@RequestBody Result result){
         service.save(result);
-    }
+    }/**/
 
     @DeleteMapping("/results/{id}")
     public void deleteById(@PathVariable("id") Long id){
@@ -40,9 +40,9 @@ public class ResultController {
         return service.findByUserId(userId);
     }
 
-    @PutMapping("/result")
-    public Result updateScreen(@Valid @RequestBody Result result) {
-        return service.updateScreen(result);
-    }
+//    @PutMapping("/results")
+//    public Result updateScreen(@Valid @RequestBody Result result) {
+//        return service.updateScreen(result);
+//    }
 
 }

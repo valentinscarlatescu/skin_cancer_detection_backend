@@ -17,19 +17,11 @@ public class Result {
 
     private Integer malign;
     private Integer benign;
-    private Integer processed;
 
     @CreationTimestamp
     private LocalDateTime dateTime;
 
     private String imagePath;
-
-    public Integer getProcessed() {
-        return processed;
-    }
-    public void setProcessed(Integer processed) {
-        this.processed = processed;
-    }
 
     public Long getId() {
         return id;
@@ -64,7 +56,7 @@ public class Result {
     }
 
     public void setMalign(Integer malign) {
-        this.malign = malign;
+        this.malign = 0;
     }
 
     public Integer getMalign() {
@@ -72,7 +64,7 @@ public class Result {
     }
 
     public void setBenign(Integer benign) {
-        this.benign = benign;
+        this.benign = 0;
     }
 
     public Integer getBenign() {
