@@ -3,6 +3,7 @@ package com.scdbackend.data.model;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,8 +16,11 @@ public class Result {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    private Integer malign;
-    private Integer benign;
+    @NotNull(message = "Malign cannot be null")
+    private Integer malign = 0;
+
+    @NotNull(message = "Benign cannot be null")
+    private Integer benign = 0;
 
     @CreationTimestamp
     private LocalDateTime dateTime;

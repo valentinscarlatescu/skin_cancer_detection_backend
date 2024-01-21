@@ -24,19 +24,16 @@ public class ResultService {
         return repository.findAll();
     }
 
-    public void save(Result result) {
-        if (result.getMalign() == null) {
-            result.setMalign(0);
-        }
+    public Result save(Result result) {
+        // Validare pentru câmpurile obligatorii
+        validateResult(result);
 
-        if (result.getBenign() == null) {
-            result.setBenign(0);
-        }
-        repository.save(result);
+        // Salvează entitatea
+        return repository.save(result);
     }
 
     public void deleteById(Long id) {
-        if( repository.existsById(id)){
+        if (repository.existsById(id)){
             repository.deleteById(id);
         }
     }
@@ -46,23 +43,23 @@ public class ResultService {
         return repository.findByUserOrderByDateTimeDesc(user);
     }
 
+    public Result findLatestResultByUserId(Long userId) {
+        User user = userService.findById(userId);
+        return repository.findTopByUserOrderByDateTimeDesc(user);
+    }
+
     public long count() {
         return repository.count();
     }
 
-//    public Result updateScreen(Result updatedResult) {
-//        // Obțineți rezultatul existent din baza de date folosind ID-ul
-//        Result existingResult = repository.findById(updatedResult.getId())
-//                .orElseThrow(() -> new RuntimeException("Result not found with id: " + updatedResult.getId()));
-//
-//        // Actualizați atributele rezultatului existent cu noile valori
-//        existingResult.setMalign(updatedResult.getMalign());
-//        existingResult.setBenign(updatedResult.getBenign());
-//        existingResult.setDateTime(updatedResult.getDateTime());
-//        existingResult.setImagePath(updatedResult.getImagePath());
-//
-//        // Salvați rezultatul actualizat în baza de date
-//        return repository.save(existingResult);
-//    }
+    public void validateResult(Result result) {
+        if (result.getMalign() == null) {
+            result.setMalign(0);
+        }
 
+        if (result.getBenign() == null) {
+            result.setBenign(0);
+        }
+        // Alte validări pot fi adăugate aici în viitor, dacă este nevoie
+    }
 }

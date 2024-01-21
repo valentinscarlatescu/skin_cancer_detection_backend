@@ -8,4 +8,7 @@ import java.util.List;
 
 public interface ResultRepository extends JpaRepository<Result, Long> {
     List<Result> findByUserOrderByDateTimeDesc(User user);
+
+    // Adăugăm metoda pentru a găsi cel mai recent rezultat pentru un utilizator
+    Result findTopByUserOrderByDateTimeDesc(User user);
 }
