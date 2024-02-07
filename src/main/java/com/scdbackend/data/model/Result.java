@@ -16,11 +16,11 @@ public class Result {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @NotNull(message = "Malign cannot be null")
-    private Integer malign = 0;
+//    @NotNull(message = "Malign cannot be null")
+    private Integer malign;
 
-    @NotNull(message = "Benign cannot be null")
-    private Integer benign = 0;
+//    @NotNull(message = "Benign cannot be null")
+    private Integer benign;
 
     @CreationTimestamp
     private LocalDateTime dateTime;
@@ -60,7 +60,7 @@ public class Result {
     }
 
     public void setMalign(Integer malign) {
-        this.malign = 0;
+        this.malign = malign;
     }
 
     public Integer getMalign() {
@@ -68,7 +68,7 @@ public class Result {
     }
 
     public void setBenign(Integer benign) {
-        this.benign = 0;
+        this.benign = benign;
     }
 
     public Integer getBenign() {

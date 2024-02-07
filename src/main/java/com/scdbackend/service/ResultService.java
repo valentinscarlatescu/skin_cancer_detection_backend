@@ -1,12 +1,9 @@
 package com.scdbackend.service;
-
 import com.scdbackend.data.model.Result;
 import com.scdbackend.data.model.User;
 import com.scdbackend.data.repository.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
 import java.util.List;
 
 @Service
@@ -26,7 +23,7 @@ public class ResultService {
 
     public Result save(Result result) {
         // Validare pentru câmpurile obligatorii
-        validateResult(result);
+//        validateResult(result);
 
         // Salvează entitatea
         return repository.save(result);
@@ -52,14 +49,15 @@ public class ResultService {
         return repository.count();
     }
 
-    public void validateResult(Result result) {
-        if (result.getMalign() == null) {
-            result.setMalign(0);
-        }
+//    public void validateResult(Result result) {
+//        if (result.getMalign() == null) {
+//            result.setMalign(0);
+//        }
+//
+//        if (result.getBenign() == null) {
+//            result.setBenign(0);
+//        }
+//        // Alte validări pot fi adăugate aici în viitor, dacă este nevoie
+//    }
 
-        if (result.getBenign() == null) {
-            result.setBenign(0);
-        }
-        // Alte validări pot fi adăugate aici în viitor, dacă este nevoie
-    }
 }
